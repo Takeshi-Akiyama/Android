@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">OreoNotification</string>
+
+    <!-- ボタン表示 -->
+    <string name="btn_send_notification_a">通知A</string>
+    <string name="btn_send_notification_b">通知B</string>
+</resources>
