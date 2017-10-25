@@ -17,7 +17,7 @@ Android/<br>
 ### 形式<br>
 [Project名] Commitコメント
 
-###サンプル<br>
+### サンプル<br>
 ```
 git commit -m "[HogeProject]Utileクラスを追加"
 ```
