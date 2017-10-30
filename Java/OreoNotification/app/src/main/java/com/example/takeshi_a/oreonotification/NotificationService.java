@@ -128,7 +128,15 @@ public class NotificationService extends IntentService {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             manager.createNotificationChannel(channel);
         }
-        manager.notify(notificationId, notification);
+
+        try {
+            for (int i = 0; i < 3; i++) {
+                manager.notify(notificationId + i, notification);
+                Thread.sleep(60000);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     // 通知作成
