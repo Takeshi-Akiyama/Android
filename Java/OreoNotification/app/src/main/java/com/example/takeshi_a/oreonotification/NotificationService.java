@@ -5,6 +5,7 @@ import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -143,6 +144,11 @@ public class NotificationService extends IntentService {
     private Notification settingNotitication(String channelId, Uri uri) {
         System.out.println("NotificationService : settingNotitication");
 
+        // 通知をタップしたら MainActivity 表示
+        Intent intent = new Intent(mContext, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 100, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
         return new NotificationCompat.Builder(mContext, channelId)
                 .setContentTitle("タイトル( 8.0 ~ )")
                 .setContentText("テキスト")
@@ -150,6 +156,8 @@ public class NotificationService extends IntentService {
                 .setSound(uri, AudioManager.STREAM_NOTIFICATION)
                 .setVibrate(new long[]{0, 1000, 500, 1000, 500})
                 .setChannelId(channelId)
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
                 .build();
     }
 
